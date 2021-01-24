@@ -1,0 +1,67 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+    
+        Scanner sc = new Scanner(System.in);
+        
+        int taxi_type       = sc.nextInt();//タクシーの台数
+        int moving_distance = sc.nextInt();//移動距離
+        
+        
+        int starting_distance = 0;//初乗り距離
+        int starting_fare     = 0;//初乗り運賃
+        int additional_distance = 0;//加算距離
+        int additional_fare = 0;//加算運賃
+        
+        int remaining_distance = 0;//残り距離
+        
+        int taxi_fee = 0;//タクシー料金
+        int high_price = 0;//最高値
+        int low_price = 5000;//最安値
+        
+        boolean bool = false;
+        
+        //料金計算
+        for(int i = 1; i <= taxi_type;i++) {
+        	
+        	starting_distance = sc.nextInt();
+        	starting_fare = sc.nextInt();
+        	additional_distance = sc.nextInt();
+        	additional_fare = sc.nextInt();
+        	
+        	
+        	//移動距離が初乗り運賃未満の場合は初乗り運賃にする
+        	if(moving_distance < starting_distance) {
+        		taxi_fee = starting_fare;
+        		bool = true;
+        	}
+        	
+        	if(bool == false){
+        		remaining_distance = moving_distance - starting_distance;//残り距離計算
+        		taxi_fee += starting_fare;//初乗り運賃　加算
+        		
+        		while(remaining_distance >= 0) {
+        			taxi_fee += additional_fare;//加算運賃　加算
+        			remaining_distance -= additional_distance;
+        		}
+        		
+        	}
+        	//最高値　最安値　比較
+
+        	if(taxi_fee > high_price) {
+        		high_price = taxi_fee;
+        	}
+        	if(taxi_fee < low_price) {
+        		low_price = taxi_fee;
+        	}
+        	
+        	//初期化
+        	taxi_fee = 0;
+        	bool = false;
+        	
+        }
+      
+        System.out.print(low_price + " " + high_price);//最低、最高料金出力
+    }
+}
