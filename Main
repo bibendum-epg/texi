@@ -13,7 +13,7 @@ public class Main {
         int extra_fare;      //加算運賃
         int taxi_fare;       //タクシー料金
 
-        int low_price  =  2147483647; //最安値
+        int low_price  =  2147483647;//最安値
         int high_price = -2147483647;//最高値
         
         //タクシーの台数分だけ料金を計算
@@ -31,8 +31,8 @@ public class Main {
         		    (int)Math.ceil((total_distance-initial_distance)/(float)extra_distance)*extra_fare;
         	}
         	//最安値，最高値の更新
-        	low_price = taxi_fare < low_price  ? taxi_fare : low_price;
-        	high_price= taxi_fare > high_price ? taxi_fare : high_price;   
+        	low_price  = taxi_fare < low_price  ? taxi_fare : low_price;
+        	high_price = taxi_fare > high_price ? taxi_fare : high_price;   
         }
         //最安値，最高値の出力
         System.out.print(low_price + " " + high_price);
