@@ -14,7 +14,7 @@ public class Main {
         int taxi_fare;       //タクシー料金
 
         int low_price  =  2147483647;//最安値
-        int high_price = -2147483647;//最高値
+        int high_price = -2147483648;//最高値
         
         //タクシーの台数分だけ料金を計算
         while(sc.hasNextInt()) {
